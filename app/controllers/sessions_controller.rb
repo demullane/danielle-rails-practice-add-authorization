@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
 
   def create
     @student = Student.find_by(email: params[:student][:email])
-    if @student && @student.authenticate(params[:student][:password])
+    if @student and @student.authenticate(params[:student][:password])
       session[:student_id] = @student.id
       redirect_to root_path, notice: 'Welcome back, stranger!'
     else
-      @student.errors[:base] << "Invalid email / password"
+      @student.errors[:base] << 'Invalid email / password'
       render :new
     end
   end

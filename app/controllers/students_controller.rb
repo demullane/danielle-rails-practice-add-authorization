@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
 
   def current_student
     if session[:student_id]
-      @current_user ||=Student.find(session[:student_id])
+      @current_student ||=Student.find(session[:student_id])
     end
   end
 
